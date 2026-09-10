@@ -34,7 +34,7 @@ We give the description, the location in the paper, and the start line number in
 * difference (`\`): [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L775):L775, `minusIs`.
 * lookup-∪: [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L285):L285, `lookup_unionIs_eq`.
 * lookup-∩: [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L611):L611, `lookup_intersectIs_eq`.
-* lookup-\: [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L841):L841, `lookup_minusIs_eq`.
+* lookup-∖: [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L841):L841, `lookup_minusIs_eq`.
 * expand-fuse: [./Lean/Einsum/ExpandProperties.lean](./Lean/Einsum/ExpandProperties.lean#L26):L26, `expand_fuse_minusIs_eq`.
 * einsum-expand: [./Lean/Einsum/EinsumProperties.lean](./Lean/Einsum/EinsumProperties.lean#L478):L478, `einsum_expand_comm_two`.
 * summation-free einsum-expand: [./Lean/Einsum/EinsumProperties.lean](./Lean/Einsum/EinsumProperties.lean#L663):L663, `einsum_expand_sum_free_comm_two`.
@@ -48,9 +48,9 @@ We give the description, the location in the paper, and the start line number in
 * difference (`∖`): [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L397):L397, `∖`.
 * lookup-∪: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L305):L305, `lookup-∪`.
 * lookup-∩: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L611):L611, `lookup-∩`.
-* difference-\: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L841):L841, `lookup-∖`.
+* lookup-∖: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L841):L841, `lookup-∖`.
 * expand-fuse: [./Agda/Einsum/ExpandProperties.agda](./Agda/Einsum/ExpandProperties.agda#L75):L75, `expand-fuse`.
-* einsum-expand: [./Agda/Einsum/EinsumProperties.agda](./Agda/Einsum/EinsumProperties.agda#L478):L478, `einsum-expand-comm`.
+* einsum-expand: [./Agda/Einsum/EinsumProperties.agda](./Agda/Einsum/EinsumProperties.agda#L198):L198, `einsum-expand-comm`.
 * summation-free einsum-expand: [./Agda/Einsum/EinsumProperties.agda](./Agda/Einsum/EinsumProperties.agda#L273):L273, `einsum-expand-summation-free-comm`.
 
 
