@@ -1,7 +1,7 @@
 Formalizing `einsum` with Named Tensor Notation
 ====
 
-This is the supplementary materials for the CPP 2027 submission "Formalizing `einsum` with Named Tensor Notation."
+This is the supplementary material for the CPP 2027 submission "Formalizing `einsum` with Named Tensor Notation."
 
 The directory contains both [Agda](./Agda) and [Lean](./Lean) implementation of the named tensor language described in the paper, which are located in `./Agda` and `./Lean` directories under this directory respectively.
 Under each folder, there is a file named as `Einsum`, which imports all implementations.
