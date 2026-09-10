@@ -28,7 +28,7 @@ We give the description, the location in the paper, and the start line number in
 ## Lean
 
 * Syntax: [./Lean/Einsum/TensorExpr.lean](./Lean/Einsum/TensorExpr.lean#L50):50, `TExpr`.
-* Denotational semantics: [./Lean/Einsum/TensorDenotation.lean](./Lean/Einsum/TensorDenotation.lea#:73):73, `denote`.
+* Denotational semantics: [./Lean/Einsum/TensorDenotation.lean](./Lean/Einsum/TensorDenotation.lean#L73):73, `denote`.
 * union (`∪`): [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L72):72, `unionIs`.
 * intersection (`∩`): [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L524):524, `intersectIs`.
 * difference (`\`): [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L775):775, `minusIs`.
