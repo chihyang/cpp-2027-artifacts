@@ -61,7 +61,7 @@ To verify the implementation, we require the following environments:
 
 ## Lean
 
-* Lean version: lean4 v4.27.0
+* Lean version: Lean4 v4.27.0
 * Mathlib standard library version: v4.27.0
 
 ## Agda
