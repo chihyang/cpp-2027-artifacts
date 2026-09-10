@@ -35,7 +35,7 @@ We give the description, the location in the paper, and the start line number in
 * lookup-∪: [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L285): L285, `lookup_unionIs_eq`.
 * lookup-∩: [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L611): L611, `lookup_intersectIs_eq`.
 * lookup-∖: [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L841): L841, `lookup_minusIs_eq`.
-* expand-fuse: [./Lean/Einsum/ExpandProperties.lean](./Lean/Einsum/ExpandProperties.lean#L26): L26, `expand_fuse_minusIs_eq`.
+* expand-fuse: [./Lean/Einsum/ExpandProperties.lean](./Lean/Einsum/ExpandProperties.lean#L26): L26, `expand_fuse`.
 * einsum-expand: [./Lean/Einsum/EinsumProperties.lean](./Lean/Einsum/EinsumProperties.lean#L478): L478, `einsum_expand_comm_two`.
 * summation-free einsum-expand: [./Lean/Einsum/EinsumProperties.lean](./Lean/Einsum/EinsumProperties.lean#L663): L663, `einsum_expand_sum_free_comm_two`.
 
