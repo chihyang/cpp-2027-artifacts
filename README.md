@@ -3,22 +3,24 @@ Formalizing `einsum` with Named Tensor Notation
 
 This is the supplementary material for the CPP 2027 submission "Formalizing `einsum` with Named Tensor Notation."
 
-The directory contains both [Agda](./Agda) and [Lean](./Lean) implementation of the named tensor language described in the paper, which are located in `./Agda` and `./Lean` directories under this directory respectively.
-Under each folder, there is a file named as `Einsum`, which imports all implementations.
+The directory contains both [Agda](./Agda) and [Lean](./Lean) implementations of the named tensor language described in the paper, which are located in `./Agda` and `./Lean` directories under this directory respectively.
+Under each folder, there is a file named `Einsum`, which imports implementations.
+The Lean implementation proves all theorems given in the paper.
+The Agda version only proves Theorem 6.1.
 The implementations are split into the following files:
 
-| File Name          | Location in Paper | Description                             |
-|--------------------|-------------------|-----------------------------------------|
-| `NamedShape`       | Section 5.1       | Named shape                             |
-| `ShapeOperations`  | Section 5.1       | Union, intersection, difference of `Is` |
-| `ShapeProperties`  | Section 5.1       | Compatible, subset, equivalence of `Is` |
-| `NamedIndex`       | Section 5.2       | Named indices                           |
-| `UnnamedIndex`     | Section 5.2       | Unnamed indices                         |
-| `TensorExpr`       | Section 3.2       | Named tensor language                   |
-| `TensorDenotation` | Section 4.2       | Denotational semantics                  |
-| `ExpandProperties` | Section 6.1       | Fusion of `expand`                      |
-| `EinsumProperties` | Section 6.2 & 6.3 | Commutativity of `einsum` and `expand`  |
-| `TensorExamples`   | Section 2         | Some examples                           |
+| File Name          | Location in Paper  | Description                                |
+|--------------------|--------------------|--------------------------------------------|
+| `NamedShape`       | Section 5.1        | Named shape                                |
+| `ShapeOperations`  | Section 5.1        | Union, intersection, difference of `Is`    |
+| `ShapeProperties`  | Section 5.1        | Compatibility, subset, equivalence of `Is` |
+| `NamedIndex`       | Section 5.2        | Named indices                              |
+| `UnnamedIndex`     | Section 5.2        | Unnamed indices                            |
+| `TensorExpr`       | Section 3.2        | Named tensor language                      |
+| `TensorDenotation` | Section 4.2        | Denotational semantics                     |
+| `ExpandProperties` | Section 6.1        | Fusion of `expand`                         |
+| `EinsumProperties` | Sections 6.2 & 6.3 | Commutativity of `einsum` and `expand`     |
+| `TensorExamples`   | Section 2          | Some examples                              |
 
 # Important Definitions
 
@@ -47,13 +49,12 @@ We give the description, the location in the paper, and the start line number in
 * intersection (`∩`): [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L200): L200, `∩`.
 * difference (`∖`): [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L397): L397, `∖`.
 * lookup-∪: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L305): L305, `lookup-∪`.
-* lookup-∩: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L611): L611, `lookup-∩`.
-* lookup-∖: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L841): L841, `lookup-∖`.
+* lookup-∖: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L438): L483, `lookup-∖`.
 * expand-fuse: [./Agda/Einsum/ExpandProperties.agda](./Agda/Einsum/ExpandProperties.agda#L75): L75, `expand-fuse`.
 * einsum-expand: [./Agda/Einsum/EinsumProperties.agda](./Agda/Einsum/EinsumProperties.agda#L198): L198, `einsum-expand-comm`.
-  The Agda version only gives the statement of this theorem.
+  The Agda version only gives the statement of this theorem and leaves the implementation as a hole.
 * summation-free einsum-expand: [./Agda/Einsum/EinsumProperties.agda](./Agda/Einsum/EinsumProperties.agda#L273): L273, `einsum-expand-summation-free-comm`.
-  The Agda version only gives the statement of this theorem.
+  The Agda version only gives the statement of this theorem and leaves the implementation as a hole.
 
 # Environments
 
@@ -62,16 +63,17 @@ To verify the implementation, we require the following environments:
 ## Lean
 
 * Lean version: Lean4 v4.27.0
-* Mathlib standard library version: v4.27.0
+* Mathlib version: v4.27.0
 
 ## Agda
 
 * Agda version: 2.7.0.1
 * Agda standard library version: agda-stdlib-2.1.1
 
-# Command
+# Commands
 
-Suppose all libraries and tools are installed correctly, you can check the proofs in the following way:
+Suppose all libraries and tools are installed correctly.
+You can check the proofs in the following way:
 
 ## Lean
 
