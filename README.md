@@ -58,7 +58,7 @@ We give the description, the location in the paper, and the starting line number
 
 # Environments
 
-To verify the implementation, we require the following environments:
+To verify the implementation, the following environments are required:
 
 ## Lean
 
