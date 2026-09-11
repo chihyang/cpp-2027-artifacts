@@ -15,7 +15,7 @@ import Einsum.NamedIndex
 import Einsum.UnnamedIndex
 import Einsum.TensorExpr
 import Einsum.TensorDenotation
-import Einsum.EinsumProperties
+import Einsum.ExpandProperties
 
 namespace TensorExamples
 open NamedShape
@@ -25,7 +25,7 @@ open NamedIndex
 open UnnamedIndex
 open TensorExpr
 open TensorDenotation
-open EinsumProperties
+open ExpandProperties
 
 abbrev Unique := NamedShape.Unique
 
