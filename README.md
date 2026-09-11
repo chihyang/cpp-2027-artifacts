@@ -25,7 +25,7 @@ The implementations are split into the following files:
 # Important Definitions
 
 We list the location of important definitions and theorems below.
-We give the description, the location in the paper, and the start line number in file in the form `filename:lineno`.
+We give the description, the location in the paper, and the starting line number in file in the form `filename:lineno`.
 
 ## Lean
 
@@ -49,7 +49,7 @@ We give the description, the location in the paper, and the start line number in
 * intersection (`∩`): [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L200): L200, `∩`.
 * difference (`∖`): [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L397): L397, `∖`.
 * lookup-∪: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L305): L305, `lookup-∪`.
-* lookup-∖: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L438): L483, `lookup-∖`.
+* lookup-∖: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L438): L438, `lookup-∖`.
 * expand-fuse: [./Agda/Einsum/ExpandProperties.agda](./Agda/Einsum/ExpandProperties.agda#L75): L75, `expand-fuse`.
 * einsum-expand: [./Agda/Einsum/EinsumProperties.agda](./Agda/Einsum/EinsumProperties.agda#L198): L198, `einsum-expand-comm`.
   The Agda version only gives the statement of this theorem and leaves the implementation as a hole.
