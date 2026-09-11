@@ -25,35 +25,35 @@ The implementations are split into the following files:
 # Important Definitions
 
 We list the location of important definitions and theorems below.
-We give the description, the location in the paper, and the starting line number in file in the form `filename:lineno`.
+We give the description and the starting line number in file in the form `filename:lineno`.
 
 ## Lean
 
-* Syntax: [./Lean/Einsum/TensorExpr.lean](./Lean/Einsum/TensorExpr.lean#L50): L50, `TExpr`.
-* Denotational semantics: [./Lean/Einsum/TensorDenotation.lean](./Lean/Einsum/TensorDenotation.lean#L73): L73, `denote`.
-* union (`∪`): [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L72): L72, `unionIs`.
-* intersection (`∩`): [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L524): L524, `intersectIs`.
-* difference (`\`): [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L775): L775, `minusIs`.
-* lookup-∪: [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L285): L285, `lookup_unionIs_eq`.
-* lookup-∩: [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L611): L611, `lookup_intersectIs_eq`.
-* lookup-∖: [./Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L841): L841, `lookup_minusIs_eq`.
-* expand-fuse: [./Lean/Einsum/ExpandProperties.lean](./Lean/Einsum/ExpandProperties.lean#L26): L26, `expand_fuse`.
-* einsum-expand: [./Lean/Einsum/EinsumProperties.lean](./Lean/Einsum/EinsumProperties.lean#L478): L478, `einsum_expand_comm_two`.
-* summation-free einsum-expand: [./Lean/Einsum/EinsumProperties.lean](./Lean/Einsum/EinsumProperties.lean#L663): L663, `einsum_expand_sum_free_comm_two`.
+* Syntax: [Lean/Einsum/TensorExpr.lean](./Lean/Einsum/TensorExpr.lean#L50): L50, `TExpr`.
+* Denotational semantics: [Lean/Einsum/TensorDenotation.lean](./Lean/Einsum/TensorDenotation.lean#L73): L73, `denote`.
+* union (`∪`): [Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L72): L72, `unionIs`.
+* intersection (`∩`): [Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L524): L524, `intersectIs`.
+* difference (`\`): [Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L775): L775, `minusIs`.
+* lookup-∪: [Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L285): L285, `lookup_unionIs_eq`.
+* lookup-∩: [Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L611): L611, `lookup_intersectIs_eq`.
+* lookup-∖: [Lean/Einsum/ShapeOperations.lean](./Lean/Einsum/ShapeOperations.lean#L841): L841, `lookup_minusIs_eq`.
+* expand-fuse: [Lean/Einsum/ExpandProperties.lean](./Lean/Einsum/ExpandProperties.lean#L26): L26, `expand_fuse`.
+* einsum-expand: [Lean/Einsum/EinsumProperties.lean](./Lean/Einsum/EinsumProperties.lean#L478): L478, `einsum_expand_comm_two`.
+* summation-free einsum-expand: [Lean/Einsum/EinsumProperties.lean](./Lean/Einsum/EinsumProperties.lean#L663): L663, `einsum_expand_sum_free_comm_two`.
 
 ## Agda
 
-* Syntax: [./Agda/Einsum/TensorExpr.agda](./Agda/Einsum/TensorExpr.agda#L65): L65, `𝕋`.
-* Denotational semantics: [./Agda/Einsum/TensorDenotation.agda](./Agda/Einsum/TensorDenotation.agda#L106): L106, `⟦_⟧⦅_⨾_⦆`.
-* union (`∪`): [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L147): L147, `∪`.
-* intersection (`∩`): [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L200): L200, `∩`.
-* difference (`∖`): [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L397): L397, `∖`.
-* lookup-∪: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L305): L305, `lookup-∪`.
-* lookup-∖: [./Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L438): L438, `lookup-∖`.
-* expand-fuse: [./Agda/Einsum/ExpandProperties.agda](./Agda/Einsum/ExpandProperties.agda#L75): L75, `expand-fuse`.
-* einsum-expand: [./Agda/Einsum/EinsumProperties.agda](./Agda/Einsum/EinsumProperties.agda#L198): L198, `einsum-expand-comm`.
+* Syntax: [Agda/Einsum/TensorExpr.agda](./Agda/Einsum/TensorExpr.agda#L65): L65, `𝕋`.
+* Denotational semantics: [Agda/Einsum/TensorDenotation.agda](./Agda/Einsum/TensorDenotation.agda#L106): L106, `⟦_⟧⦅_⨾_⦆`.
+* union (`∪`): [Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L147): L147, `∪`.
+* intersection (`∩`): [Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L200): L200, `∩`.
+* difference (`∖`): [Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L397): L397, `∖`.
+* lookup-∪: [Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L305): L305, `lookup-∪`.
+* lookup-∖: [Agda/Einsum/ShapeOperations.agda](./Agda/Einsum/ShapeOperations.agda#L438): L438, `lookup-∖`.
+* expand-fuse: [Agda/Einsum/ExpandProperties.agda](./Agda/Einsum/ExpandProperties.agda#L75): L75, `expand-fuse`.
+* einsum-expand: [Agda/Einsum/EinsumProperties.agda](./Agda/Einsum/EinsumProperties.agda#L198): L198, `einsum-expand-comm`.
   The Agda version only gives the statement of this theorem and leaves the implementation as a hole.
-* summation-free einsum-expand: [./Agda/Einsum/EinsumProperties.agda](./Agda/Einsum/EinsumProperties.agda#L273): L273, `einsum-expand-summation-free-comm`.
+* summation-free einsum-expand: [Agda/Einsum/EinsumProperties.agda](./Agda/Einsum/EinsumProperties.agda#L273): L273, `einsum-expand-summation-free-comm`.
   The Agda version only gives the statement of this theorem and leaves the implementation as a hole.
 
 # Environments
