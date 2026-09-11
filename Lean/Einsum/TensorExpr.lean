@@ -68,7 +68,7 @@ inductive TExpr {S : Type} [Semiring S] :
   | scale {Γ : Context} {xs : Is} :
     ℕ → TExpr Γ xs → TExpr Γ xs
   | const {Γ : Context} :
-    (xs : Is) → (Index xs → S) → TExpr Γ xs
+    (xs : Is) → (NIndex xs → S) → TExpr Γ xs
   | var {Γ : Context} :
     (dims : List Dim) →
     (neq : Unique dims) →

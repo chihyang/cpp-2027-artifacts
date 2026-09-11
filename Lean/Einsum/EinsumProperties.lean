@@ -29,7 +29,7 @@ lemma expand_reduce {S : Type} [Semiring S]
   (wt : TExpr Γ xs)
   (xs_ys : xs ⊑ ys)
   (env : Env (S := S) Γ)
-  (idx : Index ys) :
+  (idx : NIndex ys) :
   denote (.expand wt xs_ys) env idx
     =
   denote wt env (by exact idx.subst_cast xs_ys) := by
@@ -171,7 +171,7 @@ def EinsumExpandCommEq {S : Type} [Semiring S]
   (xys_zs : unionIs xs ys xyzw_rels.xy ∼ zs)
   (ws_xyzs : ws ⊑ unionIss (IssCompat_two xys_zs))
   (env : Env (S := S) Γ)
-  (idx : Index ws) : Prop :=
+  (idx : NIndex ws) : Prop :=
   let xys := unionIs xs ys xyzw_rels.xy
   let fs := ys ∖ (unionIs zs ws xyzw_rels.zw)
   let us := ws ∖ (ys ∖ zs)
@@ -295,9 +295,9 @@ lemma xyzw_split_eq {xs ys zs ws : Is}
   · exact xyzw_rels.yw i
   · exact xs_ys_disj i
 
-lemma Index.card_eq_prod_fromList
+lemma NIndex.card_eq_prod_fromList
   (dims : List Dim) (neq : Unique dims) :
-  Fintype.card (Index (fromList dims neq)) =
+  Fintype.card (NIndex (fromList dims neq)) =
   (fromList dims neq).prod := by
   induction dims with
   | nil =>
@@ -310,7 +310,7 @@ lemma Index.card_eq_prod_fromList
     simp only at ih
     have h := ih (Unique_cons neq)
     simp_all only [implies_true]
-    rw [Fintype.card_congr (Index.headTailEquiv neq)]
+    rw [Fintype.card_congr (NIndex.headTailEquiv neq)]
     rw [Fintype.card_prod, Fintype.card_fin]
     unfold List.map fromList
     simp only [List.prod_cons]
@@ -318,16 +318,16 @@ lemma Index.card_eq_prod_fromList
     simp only at h
     simp_all only
 
-theorem Index.card_eq_prod {xs : Is} :
-  Fintype.card (Index xs) = xs.prod := by
-  exact Index.card_eq_prod_fromList xs.pairs xs.noDup
+theorem NIndex.card_eq_prod {xs : Is} :
+  Fintype.card (NIndex xs) = xs.prod := by
+  exact NIndex.card_eq_prod_fromList xs.pairs xs.noDup
 
 lemma xyzw_down_x_eq {xs ys zs ws : Is}
   (xyzw_rels : ShapeRelPack xs ys zs ws)
   (xs_ys_disj : xs ⊥ ys)
-  (idx : Index ws)
-  {idxy : Index (ys ∖ (unionIs zs ws xyzw_rels.zw))}
-  {idxz : Index (unionIs xs zs xyzw_rels.xz ∖ (ws ∖ (ys ∖ zs)))}
+  (idx : NIndex ws)
+  {idxy : NIndex (ys ∖ (unionIs zs ws xyzw_rels.zw))}
+  {idxz : NIndex (unionIs xs zs xyzw_rels.xz ∖ (ws ∖ (ys ∖ zs)))}
   {yz_disjoint :
     (ys ∖ (unionIs zs ws xyzw_rels.zw)) ⊥
     (unionIs xs zs xyzw_rels.xz ∖ (ws ∖ (ys ∖ zs)))}
@@ -354,12 +354,12 @@ lemma xyzw_down_x_eq {xs ys zs ws : Is}
       (unionIss (IssCompat_two xyzw_rels.xz) ∖ ws ∖ ys ∖ zs)
       (disjointIs_compat wyz_xz) ≈
     unionIss (IssCompat_two xyzw_rels.xz)}:
-  (((Index.union minusIs_disjoint idx
-     ((Index.union yz_disjoint idxy idxz) →ᵢ xyzw_eq))
+  (((NIndex.union minusIs_disjoint idx
+     ((NIndex.union yz_disjoint idxy idxz) →ᵢ xyzw_eq))
      →ᵢ
     wxyw_xyz)
    ↓ᵢ xs_xyzs) ≈ᵢ
-  ((Index.union wyz_xz (idx ↓ᵢ wyz_w) (idxz →ᵢ xz_minus))
+  ((NIndex.union wyz_xz (idx ↓ᵢ wyz_w) (idxz →ᵢ xz_minus))
     →ᵢ
     wyz_xzwyz)
    ↓ᵢ xs_xz := by
@@ -369,12 +369,12 @@ lemma xyzw_down_x_eq {xs ys zs ws : Is}
     · rw [h] at hxs
       contradiction
     · exact hys
-  unfold Index.get
-  unfold Index.union
+  unfold NIndex.get
+  unfold NIndex.union
   simp only
-  unfold Index.subst_cast
-  unfold Index.eq_cast
-  unfold Index.get
+  unfold NIndex.subst_cast
+  unfold NIndex.eq_cast
+  unfold NIndex.get
   rcases CompatVal_some_or h (xyzw_rels.xw x) with hL | hR
   · simp only [hL, ↓reduceDIte]
     simp only [lookup_minusIs_eq]
@@ -403,9 +403,9 @@ lemma xyzw_down_x_eq {xs ys zs ws : Is}
 
 lemma xyzw_down_z_eq {xs ys zs ws : Is}
   (xyzw_rels : ShapeRelPack xs ys zs ws)
-  (idx : Index ws)
-  {idxy : Index (ys ∖ (unionIs zs ws xyzw_rels.zw))}
-  {idxz : Index (unionIs xs zs xyzw_rels.xz ∖ (ws ∖ (ys ∖ zs)))}
+  (idx : NIndex ws)
+  {idxy : NIndex (ys ∖ (unionIs zs ws xyzw_rels.zw))}
+  {idxz : NIndex (unionIs xs zs xyzw_rels.xz ∖ (ws ∖ (ys ∖ zs)))}
   {yz_disjoint :
     (ys ∖ (unionIs zs ws xyzw_rels.zw)) ⊥
     (unionIs xs zs xyzw_rels.xz ∖ (ws ∖ (ys ∖ zs)))}
@@ -432,22 +432,22 @@ lemma xyzw_down_z_eq {xs ys zs ws : Is}
       (unionIss (IssCompat_two xyzw_rels.xz) ∖ ws ∖ ys ∖ zs)
       (disjointIs_compat wyz_xz) ≈
     unionIss (IssCompat_two xyzw_rels.xz)}:
-  (((Index.union minusIs_disjoint idx
-     ((Index.union yz_disjoint idxy idxz) →ᵢ xyzw_eq))
+  (((NIndex.union minusIs_disjoint idx
+     ((NIndex.union yz_disjoint idxy idxz) →ᵢ xyzw_eq))
      →ᵢ
     wxyw_xyz)
    ↓ᵢ zs_xyzs) ≈ᵢ
-  ((Index.union wyz_xz (idx ↓ᵢ wyz_w) (idxz →ᵢ xz_minus))
+  ((NIndex.union wyz_xz (idx ↓ᵢ wyz_w) (idxz →ᵢ xz_minus))
     →ᵢ
     wyz_xzwyz)
    ↓ᵢ zs_xz := by
   intro x v h
-  unfold Index.get
-  unfold Index.union
+  unfold NIndex.get
+  unfold NIndex.union
   simp only
-  unfold Index.subst_cast
-  unfold Index.eq_cast
-  unfold Index.get
+  unfold NIndex.subst_cast
+  unfold NIndex.eq_cast
+  unfold NIndex.get
   rcases CompatVal_some_or h (xyzw_rels.zw x) with hL | hR
   · simp only [hL, ↓reduceDIte]
     simp_all only [lookup_minusIs_eq]
@@ -484,7 +484,7 @@ theorem einsum_expand_comm_two {S : Type} [Semiring S]
   (xy_z : unionIs xs ys (disjointIs_compat xs_ys_disj) ∼ zs)
   (w_xyz : ws ⊑ unionIss (IssCompat_two xy_z))
   (env : Env (S := S) Γ)
-  (idx : Index ws) :
+  (idx : NIndex ws) :
   have xyzw_rels := xyzw_Relations xs_ys_disj xy_z w_xyz
   EinsumExpandCommEq wt₁ wt₂ xyzw_rels xy_z w_xyz env idx := by
   simp only [EinsumExpandCommEq, denote, denotes]
@@ -510,7 +510,7 @@ theorem einsum_expand_comm_two {S : Type} [Semiring S]
   simp only [mul_one]
   /- Step 3: the outer argument in LHS doesn't matter -/
   have down_eq_xs := fun idxy idxz =>
-    Index.ext (xyzw_down_x_eq xyzw_rels xs_ys_disj idx
+    NIndex.ext (xyzw_down_x_eq xyzw_rels xs_ys_disj idx
       (idxy := idxy)
       (idxz := idxz)
       (yz_disjoint := xyzw_split_disj)
@@ -526,7 +526,7 @@ theorem einsum_expand_comm_two {S : Type} [Semiring S]
       (wyz_xzwyz := minusIs_union_eq xyzw_rels.wyz_xz))
   simp_rw [down_eq_xs]
   have down_eq_zs := fun idxy idxz =>
-    Index.ext (xyzw_down_z_eq xyzw_rels idx
+    NIndex.ext (xyzw_down_z_eq xyzw_rels idx
       (idxy := idxy)
       (idxz := idxz)
       (yz_disjoint := xyzw_split_disj)
@@ -544,7 +544,7 @@ theorem einsum_expand_comm_two {S : Type} [Semiring S]
       (wyz_xzwyz := minusIs_union_eq xyzw_rels.wyz_xz))
   simp_rw [down_eq_zs]
   /- Step 4: rewrite RHS to Fintype.card -/
-  rw [← Index.card_eq_prod]
+  rw [← NIndex.card_eq_prod]
   unfold sum
   rw [Finset.sum_const]
   simp only [Finset.card_univ, nsmul_eq_mul]
@@ -558,7 +558,7 @@ def EinsumExpandSumFreeCommEq {S : Type} [Semiring S]
   (xys_zs : unionIs xs ys xyzw_rels.xy ∼ zs)
   (ws_xyzs : ws ≈ unionIss (IssCompat_two xys_zs))
   (env : Env (S := S) Γ)
-  (idx : Index ws) : Prop :=
+  (idx : NIndex ws) : Prop :=
   let xzs := unionIss xyzw_rels.xzs
   have ws_xyzs_subset : ws ⊑ unionIss xyzw_rels.xy_z := by
     apply IsEq_subset
@@ -591,7 +591,7 @@ theorem scale_one {S : Type} [Semiring S]
   {xs : Is}
   (wt₁ : TExpr Γ xs)
   (env : Env (S := S) Γ)
-  (idx : Index xs) :
+  (idx : NIndex xs) :
   denote (.scale 1 wt₁) env idx =
   denote wt₁ env idx := by
   simp only [denote]
@@ -603,7 +603,7 @@ theorem scale_expand_comm {S : Type} [Semiring S]
   (xs_zs : xs ⊑ zs)
   (wt₁ : TExpr Γ xs)
   (env : Env (S := S) Γ)
-  (idx : Index zs) :
+  (idx : NIndex zs) :
   denote (.expand (.scale n wt₁) xs_zs) env idx =
   denote (.scale n (.expand wt₁ xs_zs)) env idx := by
   simp only [denote]
@@ -614,7 +614,7 @@ theorem scale_one_expand {S : Type} [Semiring S]
   (xs_zs : xs ⊑ zs)
   (wt₁ : TExpr Γ xs)
   (env : Env (S := S) Γ)
-  (idx : Index zs) :
+  (idx : NIndex zs) :
   denote (.expand (.scale 1 wt₁) xs_zs) env idx =
   denote (.expand wt₁ xs_zs) env idx := by
   rw [scale_expand_comm]
@@ -638,19 +638,19 @@ lemma denote_sum_free_union_path_eq {S : Type} [Semiring S]
   (vs_us' : vs ⊑ us')
   (wt₁ : TExpr Γ vs)
   (env : Env (S := S) Γ)
-  (idx : Index ws)
-  (idx' : Index zs) :
+  (idx : NIndex ws)
+  (idx' : NIndex zs) :
   denote wt₁ env
-    ((Index.union xs_ys (idx ↓ᵢ xs_ws) (idx' →ᵢ zs_ys) →ᵢ xy) ↓ᵢ vs_us) =
+    ((NIndex.union xs_ys (idx ↓ᵢ xs_ws) (idx' →ᵢ zs_ys) →ᵢ xy) ↓ᵢ vs_us) =
   denote wt₁ env
-    ((Index.union xs_ys' (idx ↓ᵢ xs_ws') (idx' →ᵢ zs_ys') →ᵢ xy') ↓ᵢ vs_us') := by
+    ((NIndex.union xs_ys' (idx ↓ᵢ xs_ws') (idx' →ᵢ zs_ys') →ᵢ xy') ↓ᵢ vs_us') := by
   apply denote_congr
-  apply Index.subst_cast_equiv
-  · apply Index.compat_cast_equiv
-    · apply Index.compat_cast_left_equiv
-      · apply Index.union_equiv
-        · apply Index.subst_cast_heter
-        · apply Index.compat_cast_heter
+  apply NIndex.subst_cast_equiv
+  · apply NIndex.compat_cast_equiv
+    · apply NIndex.compat_cast_left_equiv
+      · apply NIndex.union_equiv
+        · apply NIndex.subst_cast_heter
+        · apply NIndex.compat_cast_heter
         · exact xs_xs'
         · exact ys_ys'
     · apply IsRelEquiv.symm
@@ -669,7 +669,7 @@ lemma einsum_expand_sum_free_comm_two {S : Type} [Semiring S]
   (xy_z : unionIs xs ys (disjointIs_compat xs_ys_disj) ∼ zs)
   (w_xyz : ws ≈ unionIss (IssCompat_two xy_z))
   (env : Env (S := S) Γ)
-  (idx : Index ws) :
+  (idx : NIndex ws) :
   have xyzw_rels := xyzw_Relations xs_ys_disj xy_z (IsEq_subset w_xyz)
   EinsumExpandSumFreeCommEq wt₁ wt₂ xyzw_rels xy_z w_xyz env idx := by
   have xyzw_rels := xyzw_Relations xs_ys_disj xy_z (IsEq_subset w_xyz)

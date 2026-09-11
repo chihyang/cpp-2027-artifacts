@@ -140,7 +140,7 @@ def xySubXYZ : xy ⊑ xyz := by
 
 def xSubXYZ : x ⊑ xyz := IsSubset_trans xSubXY xySubXYZ
 
-def xToVec : Index x → ℕ
+def xToVec : NIndex x → ℕ
   | ⟨idx⟩ =>
     let h : lookup x "x" = some 2 := by
       unfold lookup x
@@ -165,7 +165,7 @@ def wtExpandedXYZ : TExpr (S := ℕ) ctx xyz :=
 def wtExpandedDirect : TExpr (S := ℕ) ctx xyz :=
   .expand wt37 xSubXYZ
 
-example (idx : Index xyz) :
+example (idx : NIndex xyz) :
   denote wtExpandedXYZ env idx = denote wtExpandedDirect env idx := by
   unfold wtExpandedXYZ wtExpandedDirect
   exact expand_fuse wt37 xSubXY xySubXYZ env idx
@@ -181,7 +181,7 @@ def einsumEmpty : TExpr (S := ℂ) ctx empty :=
       unfold unionIss unionIssAcc
       apply IsSubset_refl)
 
-def denoteEinsumEmpty : denote einsumEmpty env Index.empty = 1 := by
+def denoteEinsumEmpty : denote einsumEmpty env NIndex.empty = 1 := by
   simp only [einsumEmpty, denote, unionIss, unionIssAcc, minusIs, sum, wtsEmpty, denotes]
   simp_all only [Finset.sum_const, Finset.card_univ, nsmul_eq_mul, mul_one, Nat.cast_eq_one]
   rfl

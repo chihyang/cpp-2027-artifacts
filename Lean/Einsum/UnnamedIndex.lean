@@ -40,8 +40,8 @@ instance UIndex.fintype (dims : List UpperBound) :
     unfold UIndex
     apply instFintypeProd
 
-def Index.toUnnamed (xs : List Dim) (neq : Unique xs)
-  (idx : Index (fromList xs neq)) :
+def NIndex.toUnnamed (xs : List Dim) (neq : Unique xs)
+  (idx : NIndex (fromList xs neq)) :
   UIndex (xs.map Prod.snd) :=
   match xs with
   | [] => .unit
@@ -52,11 +52,11 @@ def Index.toUnnamed (xs : List Dim) (neq : Unique xs)
     · apply @idx.get x d
       unfold fromList
       apply lookupPairs_head
-    · apply Index.toUnnamed xs'
-      apply Index.tail neq idx
+    · apply NIndex.toUnnamed xs'
+      apply NIndex.tail neq idx
 
-def Index.fromUnnamed (xs : List Dim) (neq : Unique xs) :
-  UIndex (xs.map Prod.snd) → Index (fromList xs neq) :=
+def NIndex.fromUnnamed (xs : List Dim) (neq : Unique xs) :
+  UIndex (xs.map Prod.snd) → NIndex (fromList xs neq) :=
   fun idx =>
   match xs with
   | [] =>
@@ -66,7 +66,7 @@ def Index.fromUnnamed (xs : List Dim) (neq : Unique xs) :
   | (x, d) :: xs' =>
     match idx with
     | (i , is) =>
-      Index.cons (neq := neq) i
-        (Index.fromUnnamed xs' (Unique_cons neq) is)
+      NIndex.cons (neq := neq) i
+        (NIndex.fromUnnamed xs' (Unique_cons neq) is)
 
 end UnnamedIndex

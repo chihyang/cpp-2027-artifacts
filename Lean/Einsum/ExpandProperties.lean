@@ -30,12 +30,12 @@ theorem expand_fuse {S : Type} [Semiring S]
   (xs_ys : xs ⊑ ys)
   (ys_zs : ys ⊑ zs)
   (env : Env (S := S) Γ)
-  (idx : Index zs) :
+  (idx : NIndex zs) :
   denote (.expand (.expand wt xs_ys) ys_zs) env idx
     =
   denote (.expand wt (IsSubset_trans xs_ys ys_zs)) env idx := by
   simp only [denote]
   apply denote_congr
-  apply Index.subst_cast_assoc
+  apply NIndex.subst_cast_assoc
 
 end ExpandProperties
