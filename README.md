@@ -64,11 +64,13 @@ To verify the implementation, we require the following environments:
 
 * Lean version: Lean4 v4.27.0
 * Mathlib version: v4.27.0
+* Installation instructions: https://lean-lang.org/install/
 
 ## Agda
 
 * Agda version: 2.7.0.1
 * Agda standard library version: agda-stdlib-2.1.1
+* Installation instructions: https://agda.readthedocs.io/en/v2.7.0.1/getting-started/installation.html
 
 # Commands
 
